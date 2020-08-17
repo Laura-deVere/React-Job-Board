@@ -5,12 +5,14 @@ import JobList from "./components/JobList";
 import dummyData from "./fakeTestData";
 import "./App.scss";
 import LocationSearch from "./components/LocationSearch";
+import Header from "./components/Header";
 
 class App extends React.Component {
   state = {
     keyword: "",
     location: "New York",
     jobs: dummyData,
+    selectedJob: {},
   };
 
   componentDidMount() {
@@ -27,14 +29,28 @@ class App extends React.Component {
       .catch((error) => console.error());
   }
 
+  setSelectedJob(id) {
+    console.log(id);
+    this.state.jobs.forEach((job) => {
+      if (job.id === id) {
+        console.log(job);
+        this.setState({ selectedJob: job });
+      }
+    });
+  }
+
   render() {
     return (
       <div>
-        GetMeAJob.com
-        <KeyWordSearch />
+        <Header>
+          <KeyWordSearch />
+        </Header>
         <LocationSearch />
-        <JobList jobs={this.state.jobs} />
-        <JobCard />
+        <JobList
+          jobs={this.state.jobs}
+          setSelectedJob={this.setSelectedJob.bind(this)}
+        />
+        <JobCard job={this.state.selectedJob} />
       </div>
     );
   }

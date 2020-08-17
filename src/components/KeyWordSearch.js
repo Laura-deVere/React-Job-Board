@@ -6,7 +6,7 @@ const KeyWordSearch = () => {
     <div className="keyword-search">
       <div className="search-bar">
         <div className="icon-input">
-          <i class="lni lni-briefcase"></i>
+          <i className="lni lni-briefcase"></i>
         </div>
         <InputField placeholder="Title, companies, technologies" />
         <button className="search-btn">Search</button>

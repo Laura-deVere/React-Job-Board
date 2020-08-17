@@ -88,7 +88,6 @@ const getTimeAgo = (created_at) => {
   console.log(daysAgo);
 };
 const JobListItem = ({ job }) => {
-  console.log(job);
   const {
     company,
     title,
@@ -99,20 +98,20 @@ const JobListItem = ({ job }) => {
     location,
   } = job;
   return (
-    <div className="job-list-item">
+    <div className="job-list-item box-shadow">
       <div className="company-logo">
         <img src={company_logo} alt={`${company}-logo`} />
       </div>
       <div className="job-details">
         <p className="company-name">
-          <a href={company_url} target="_blank">
-            {company}
-          </a>
+          {/* <a href={company_url} target="_blank"> */}
+          {company}
+          {/* </a> */}
         </p>
         <p className="job-title">{title}</p>
         <p className="job-type">{type}</p>
         <span className="job-location">
-          <i class="lni lni-world"></i> {location}
+          <i className="lni lni-world"></i> {location}
         </span>{" "}
         <span className="job-created-at">
           <i className="lni lni-timer"></i>

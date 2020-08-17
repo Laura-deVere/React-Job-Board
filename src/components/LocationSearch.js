@@ -9,7 +9,11 @@ const LocationSearch = () => {
           <input type="checkbox" />
           Full Time
         </label>
-        <InputField label="location" />
+        <InputField
+          label="LOCATION"
+          placeholder="City, state, zipcode or country"
+          addStyle="box-shadow"
+        />
         <label>
           <input value="London" type="checkbox" />
           London
