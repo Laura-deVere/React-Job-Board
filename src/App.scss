@@ -16,9 +16,14 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   color: $darkGray;
+}
+
+.main-content {
+  width: 90%;
+  margin: 0 auto;
 }
 // Reusable
 .box-shadow {
@@ -83,6 +88,10 @@ body {
   align-items: center;
   justify-content: center;
   // background-position-y: -185px;
+  form {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .location-search {
@@ -128,7 +137,7 @@ body {
   margin: 20px 0;
   border-radius: 5px;
   .company-logo {
-    width: 100px;
+    width: 78px;
     min-height: 100px;
     max-height: 200px;
     display: flex;
@@ -136,7 +145,7 @@ body {
     padding: 0.5em 0.5em 0 0.5em;
     img {
       height: auto;
-      width: 100px;
+      width: 100%;
     }
   }
   .job-details {
@@ -166,6 +175,7 @@ body {
     .job-created-at {
       color: #999d9e;
       font-weight: 300;
+      font-size: 0.7em;
     }
   }
 }

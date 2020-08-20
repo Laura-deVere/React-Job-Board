@@ -1,5 +1,6 @@
 import React from "react";
 import DOMPurify from "dompurify";
+import { Link } from "react-router-dom";
 
 const JobCard = ({ job }) => {
   const {
@@ -15,7 +16,11 @@ const JobCard = ({ job }) => {
   } = job;
   return (
     <div className="job-card">
-      <button> Back to search</button>
+      <Link to="/">
+        <button>
+          <i className="lni lni-arrow-left"></i>Back to search
+        </button>
+      </Link>
       <div className="apply">
         <h3>HOW TO APPLY</h3>
         <div

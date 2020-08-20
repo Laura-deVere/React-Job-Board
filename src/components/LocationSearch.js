@@ -1,5 +1,4 @@
 import React from "react";
-import InputField from "./InputField";
 
 const LocationSearch = () => {
   return (
@@ -9,11 +8,17 @@ const LocationSearch = () => {
           <input type="checkbox" />
           Full Time
         </label>
-        <InputField
-          label="LOCATION"
-          placeholder="City, state, zipcode or country"
-          addStyle="box-shadow"
-        />
+        <div className="input-field">
+          <label>
+            LOCATION
+            <input
+              type="text"
+              placeholder="City, state, zipcode or country"
+              className="box-shadow"
+              value=""
+            />
+          </label>
+        </div>
         <label>
           <input value="London" type="checkbox" />
           London
