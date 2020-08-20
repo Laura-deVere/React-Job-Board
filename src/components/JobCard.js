@@ -16,18 +16,22 @@ const JobCard = ({ job }) => {
   } = job;
   return (
     <div className="job-card">
-      <Link to="/">
-        <button>
-          <i className="lni lni-arrow-left"></i>Back to search
-        </button>
-      </Link>
-      <div className="apply">
-        <h3>HOW TO APPLY</h3>
-        <div
-          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(how_to_apply) }}
-        ></div>
+      <div className="job-card-side">
+        <Link to="/">
+          <button className="btn-back">
+            <i className="lni lni-arrow-left"></i>Back to search
+          </button>
+        </Link>
+        <div className="job-card-apply">
+          <h3>HOW TO APPLY</h3>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(how_to_apply),
+            }}
+          ></div>
+        </div>
       </div>
-      <div className="job-detail">
+      <div className="job-details">
         <p className="job-title">{title}</p>
         <p className="job-type">{type}</p>
         <span className="job-created-at">
@@ -46,6 +50,7 @@ const JobCard = ({ job }) => {
           {location}
         </span>
         <p
+          className="job-description"
           dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}
         ></p>
       </div>

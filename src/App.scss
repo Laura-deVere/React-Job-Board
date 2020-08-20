@@ -64,7 +64,18 @@ body {
   color: white;
   padding: 5px;
 }
+
+.btn-back {
+  background-color: transparent;
+  color: $coral;
+  border: none;
+  padding: 10px;
+  i {
+    margin-right: 10px;
+  }
+}
 // Reusable End ////
+
 ///HEader/////@at-root
 .header {
   background-color: $darkGray;
@@ -148,34 +159,85 @@ body {
       width: 100%;
     }
   }
-  .job-details {
-    max-width: 60%;
-    padding: 10px;
-    .company-name {
-      margin: 0;
-      font-weight: 500;
-      color: $darkGray;
-      text-decoration: none;
-      font-size: 0.8em;
+}
+
+.job-details {
+  max-width: 60%;
+  padding: 10px;
+  a {
+    text-decoration: none;
+  }
+  .company-name {
+    margin: 0;
+    font-weight: 500;
+    color: $darkGray;
+    text-decoration: none;
+    font-size: 0.8em;
+  }
+  .job-title {
+    font-size: 1em;
+    margin: 0.5em 0;
+    color: $darkGray;
+  }
+  .job-type {
+    font-size: 0.9em;
+    padding: 5px;
+    border: 1px solid $darkGray;
+    border-radius: 5px;
+    max-width: 70px;
+    text-align: center;
+    margin: 0.5em 0 1em 0;
+  }
+  .job-location,
+  .job-created-at {
+    color: #999d9e;
+    font-weight: 300;
+    font-size: 0.7em;
+  }
+}
+
+.job-card {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  .job-card-side {
+    width: 100%;
+  }
+  .job-card-apply {
+    h3 {
+      color: $medGray;
+      font-weight: 700;
     }
+  }
+  .job-detail {
     .job-title {
-      font-size: 1em;
-      margin: 0.5em 0;
+      font-size: 1.5em;
     }
-    .job-type {
-      font-size: 0.9em;
-      padding: 5px;
-      border: 1px solid $darkGray;
-      border-radius: 5px;
-      max-width: 70px;
-      text-align: center;
-      margin: 0.5em 0 1em 0;
+  }
+  .company-logo {
+    width: 50px;
+    img {
+      width: 100%;
     }
-    .job-location,
-    .job-created-at {
-      color: #999d9e;
-      font-weight: 300;
-      font-size: 0.7em;
-    }
+  }
+  .job-description {
+    font-size: 1em;
+    font-weight: 300;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  .main-content {
+    display: flex;
+    // justify-content: center;
+  }
+  .location-search {
+    min-width: 40%;
+  }
+  .job-list {
+    max-width: 60%;
+  }
+  .job-card {
+    flex-direction: row;
   }
 }

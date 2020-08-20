@@ -57,9 +57,9 @@ class App extends React.Component {
             />
           </Header>
           <section className="main-content">
-            <LocationSearch />
             <Switch>
               <Route exact path="/">
+                <LocationSearch />
                 <JobList
                   jobs={this.state.jobs}
                   setSelectedJob={this.setSelectedJob.bind(this)}
