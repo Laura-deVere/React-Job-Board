@@ -32,15 +32,14 @@ const LocationSearch = () => {
           Berlin
         </label>
 
-        <label>
-          Type of employment
+        {/* <label>
           <input type="checkbox" />
           Full Time
         </label>
         <label>
           <input type="checkbox" />
           Part Time
-        </label>
+        </label> */}
       </form>
     </div>
   );

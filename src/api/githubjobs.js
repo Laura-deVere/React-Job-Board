@@ -1,4 +1,4 @@
 import axios from "axios";
 export default axios.create({
-  baseURL: "/positions.json?",
+  baseURL: "https://jobs.github.com/positions.json?",
 });
