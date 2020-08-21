@@ -4,10 +4,6 @@ const LocationSearch = () => {
   return (
     <div className="location-search">
       <form>
-        <label>
-          <input type="checkbox" />
-          Full Time
-        </label>
         <div className="input-field">
           <label>
             LOCATION
@@ -34,6 +30,16 @@ const LocationSearch = () => {
         <label>
           <input value="Berlin" type="checkbox" />
           Berlin
+        </label>
+
+        <label>
+          Type of employment
+          <input type="checkbox" />
+          Full Time
+        </label>
+        <label>
+          <input type="checkbox" />
+          Part Time
         </label>
       </form>
     </div>

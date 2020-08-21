@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import githubjobs from "./api/githubjobs";
 import LocationSearch from "./components/LocationSearch";
-import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
 import JobCard from "./components/JobCard";
 import KeyWordSearch from "./components/KeyWordSearch";
 import JobList from "./components/JobList";
@@ -50,16 +50,15 @@ class App extends React.Component {
     return (
       <main className="app">
         <Router>
-          <Header>
+          <Sidebar />
+          <LocationSearch />
+          <section className="main-content">
             <KeyWordSearch
               keyword={this.state.keyword}
               onFormSubmit={this.handleFormSubmit.bind(this)}
             />
-          </Header>
-          <section className="main-content">
             <Switch>
               <Route exact path="/">
-                <LocationSearch />
                 <JobList
                   jobs={this.state.jobs}
                   setSelectedJob={this.setSelectedJob.bind(this)}
