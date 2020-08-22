@@ -6,73 +6,94 @@ import Sidebar from "./components/Sidebar";
 import JobCard from "./components/JobCard";
 import KeyWordSearch from "./components/KeyWordSearch";
 import JobList from "./components/JobList";
+import ErrorMessage from "./components/ErrorMessage";
+import Spinner from "./components/Spinner";
 
 import "./App.scss";
 
-class App extends React.Component {
-  state = {
-    keyword: "javascript",
-    jobs: [],
-    selectedJob: {},
+const { useState, useEffect } = require("react");
+
+const App = () => {
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [keyword, setKeyword] = useState("javascript");
+  const [location, setLocation] = useState("");
+  const [jobs, setJobs] = useState([]);
+  const [selectedJob, setSelectedJob] = useState({});
+
+  useEffect(() => {
+    getData();
+  }, [keyword, location]);
+
+  const getData = async () => {
+    return await githubjobs
+      .get("", {
+        params: {
+          description: keyword,
+          location: location,
+        },
+      })
+      .then((res) => {
+        setJobs(res.data);
+        setLoading(false);
+
+        if (!res.data.length) {
+          setError(true);
+        }
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log(error);
+        }
+      });
   };
 
-  componentDidMount() {
-    this.getData();
-  }
+  const handleFormSubmit = (term) => {
+    setKeyword(term);
+  };
 
-  async getData() {
-    const response = await githubjobs.get("", {
-      params: {
-        description: this.state.keyword,
-      },
-    });
+  const handleLocationSubmit = (locationString) => {
+    setLocation(locationString);
+  };
 
-    this.setState({ jobs: response.data });
-  }
-
-  handleFormSubmit(term) {
-    this.setState({ keyword: term });
-    console.log(this.state.keyword);
-    this.getData();
-  }
-
-  setSelectedJob(id) {
-    console.log(id);
-    this.state.jobs.forEach((job) => {
+  const handleSelectedJob = (id) => {
+    jobs.forEach((job) => {
       if (job.id === id) {
         console.log(job);
-        this.setState({ selectedJob: job });
+        setSelectedJob(job);
       }
     });
-  }
+  };
 
-  render() {
-    return (
-      <main className="app">
-        <Router>
-          <Sidebar />
-          <LocationSearch />
-          <section className="main-content">
-            <KeyWordSearch
-              keyword={this.state.keyword}
-              onFormSubmit={this.handleFormSubmit.bind(this)}
-            />
-            <Switch>
-              <Route exact path="/">
-                <JobList
-                  jobs={this.state.jobs}
-                  setSelectedJob={this.setSelectedJob.bind(this)}
-                />
-              </Route>
-              <Route path="/job">
-                <JobCard job={this.state.selectedJob} />
-              </Route>
-            </Switch>
-          </section>
-        </Router>
-      </main>
-    );
-  }
-}
+  return (
+    <main className="app">
+      <Router>
+        <Sidebar />
+        <LocationSearch handleLocationSubmit={handleLocationSubmit} />
+        <section className="main-content">
+          <KeyWordSearch keyword={keyword} onFormSubmit={handleFormSubmit} />
+          {loading ? <Spinner /> : null}
+          {!error ? (
+            ""
+          ) : (
+            <ErrorMessage message="Looks like nothing matches your search right now. Try back later." />
+          )}
+          <Switch>
+            <Route exact path="/">
+              <JobList jobs={jobs} handleSelectedJob={handleSelectedJob} />
+            </Route>
+            <Route path="/job">
+              <JobCard job={selectedJob} />
+            </Route>
+          </Switch>
+        </section>
+      </Router>
+    </main>
+  );
+};
 
 export default App;

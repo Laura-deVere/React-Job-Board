@@ -41,7 +41,7 @@ const JobListItem = ({ job }) => {
         </span>{" "}
         <span className="job-created-at">
           <i className="lni lni-timer"></i>
-          {getTimeAgo(created_at)}
+          {}
         </span>
       </div>
     </div>
