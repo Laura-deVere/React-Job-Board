@@ -1,16 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
-const getTimeAgo = (created_at) => {
-  const createdAt = new Date(created_at);
-  const day = createdAt.getDate();
-  let timeNow = Date.now();
-  timeNow = new Date(timeNow);
-  let daysAgo = timeNow.setDate(timeNow.getDate() - day);
-  daysAgo = new Date(daysAgo);
-  daysAgo = daysAgo.getDate();
-  console.log(daysAgo);
-};
 const JobListItem = ({ job }) => {
   const {
     company,
@@ -41,7 +32,7 @@ const JobListItem = ({ job }) => {
         </span>{" "}
         <span className="job-created-at">
           <i className="lni lni-timer"></i>
-          {}
+          {moment(created_at).fromNow()}
         </span>
       </div>
     </div>

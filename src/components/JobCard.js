@@ -1,6 +1,7 @@
 import React from "react";
 import DOMPurify from "dompurify";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 const JobCard = ({ job }) => {
   const {
@@ -36,6 +37,7 @@ const JobCard = ({ job }) => {
         <p className="job-type">{type}</p>
         <span className="job-created-at">
           <i className="lni lni-timer"></i>
+          {moment(created_at).fromNow()}
         </span>
         <p className="company-name">
           <a href={company_url} target="_blank">
